@@ -6,11 +6,11 @@ services:
     #build: .
     container_name: solana-valitator
     restart: on-failure
-    # command: "solana-test-validator"
+    #command: "solana-test-validator"
     volumes:
-      - ./validator/test-ledger:/test-ledger
-      - ./validator/wallet:/wallet
-      - ./validator/locconfig.yml:/root/.config/solana/cli/config.yml
+      - ./validatorenv/test-ledger:/test-ledger
+      - ./validatorenv/wallet:/wallet
+      - ./validatorenv/locconfig.yml:/root/.config/solana/cli/config.yml
     ports:
       - 8899:8899
       #- "80:80/udp"
@@ -25,38 +25,12 @@ services:
     depends_on:
       - solana-validator
     volumes:
-      #- ./dev/soltest-ledger:/test-ledger
-      - ./dev/sol:/sol
-      - ./dev/wallet:/wallet
-      # - ./solconfig/devconfig.yml:/root/.config/solana/cli/config.yml
-      - ./dev/solconfig/locconfig.yml:/root/.config/solana/cli/config.yml
+      - ./appdev:/sol
+      - ./devenv/wallet:/wallet
+      - ./devenv/config/localnet.yml:/root/.config/solana/cli/config.yml
     #ports:
     #   - 8899:8899
     #   - "80:80/udp"
     #   - "80:80/tcp"
 
-  # solvalidator:
-  #   image: dmitryr117/solana-noavx2:1.10.8
-  #   container_name: solvalitator
-  #   restart: on-failure
-  #   #command: "solana-test-validator --limit-ledger-size 40000"
-  #   volumes:
-  #     - ./test-ledger:/test-ledger
-  #     #- ./sol:/sol
-  #     - ./wallet:/wallet
-  #     - ./solconfig/mainconfig.yml:/root/.config/solana/cli/config.yml
-  #   expose:
-  #     - 8899
-  #   ports:
-  #     - 8899:8899
-      
-  # solnodejs:
-  #   image: dmitryr117/nodejsts:16
-  #   container_name: solnodejs
-  #   restart: on-failure
-  #   volumes:
-  #     - ./nodeapp:/app
-  #     - ./wallet:/wallet
-  #     - ./solconfig.yml:/sol/config.yml
-  #     #- ./sol/rust:/rust
     
