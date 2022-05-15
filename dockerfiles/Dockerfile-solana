@@ -1,0 +1,12 @@
+FROM dmitryr117/rust:1.60.0
+
+ARG solversion="v1.9.13"
+ENV PATH="/root/.local/share/solana/install/active_release/bin:${PATH}"
+ARG DEVNET_URL="https://api.devnet.solana.com"
+# Separate run because solana version changes often
+RUN sh -c "$(curl -sSfL https://release.solana.com/${solversion}/install)" && \
+    solana config set --url ${DEVNET_URL} && \
+    solana config set --keypair /wallet/devkey.json && \
+    mkdir /wallet
+
+CMD ["tail", "-f", "/dev/null"]

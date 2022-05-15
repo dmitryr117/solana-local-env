@@ -1,0 +1,17 @@
+# dmitryr117/rust:1.60.0
+
+FROM ubuntu:20.04
+
+ENV TZ="America/Edmonton"
+
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+		echo $TZ > /etc/timezone && \
+		apt-get update && apt-get upgrade -y && \
+    apt-get install -y curl build-essential libssl-dev pkg-config libudev-dev && \
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
+    rustc --version
+    
+
+CMD ["tail", "-f", "/dev/null"]

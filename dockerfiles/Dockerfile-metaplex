@@ -1,0 +1,41 @@
+FROM dmitryr117/solana:v1.8.12
+
+#FROM ubuntu:20.04
+
+# ARG solversion="v1.8.11"
+# ENV PATH="/root/.local/share/solana/install/active_release/bin:/root/.cargo/bin:${PATH}"
+
+# RUN apt-get update && \
+#     apt-get install -y build-essential curl git libssl-dev libffi-dev jq && \
+#     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# # Separate run because solana version changes often
+# RUN sh -c "$(curl -sSfL https://release.solana.com/${solversion}/install)" && \
+#     solana config set --url devnet && \
+#     solana config set --keypair /app/wallet/devkey.json
+
+
+ARG nodeversion="17.x"
+
+# RUN apt-get install -y git libssl-dev libffi-dev jq
+# Install metaplex
+RUN sh -c "$(curl -sSfL https://deb.nodesource.com/setup_${nodeversion})" && \
+    apt-get update && \
+    apt-get install -y git nodejs jq && \
+    node --version && \
+    npm install --global yarn ts-node && \
+    # git clone --branch v1.0.0 https://github.com/metaplex-foundation/metaplex.git /metaplex && \
+    git clone https://github.com/metaplex-foundation/metaplex.git /metaplex && \
+    yarn install --cwd /metaplex/js/ && \
+    git --version && \
+    node --version && \
+    yarn --version && \
+    ts-node --version && \
+    ts-node /metaplex/js/packages/cli/src/candy-machine-cli.ts --version && \
+    ts-node /metaplex/js/packages/cli/src/candy-machine-v2-cli.ts --version
+
+RUN mkdir /app
+
+WORKDIR /app
+
+CMD ["tail", "-f", "/dev/null"]
