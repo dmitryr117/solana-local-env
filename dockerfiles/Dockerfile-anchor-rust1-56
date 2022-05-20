@@ -1,0 +1,6 @@
+
+FROM dmitryr117/anchor-noavx2:0.24.2
+
+RUN rustup install 1.56.0 && rustup default 1.56.0
+
+

@@ -2,5 +2,13 @@
 appdev/
 devenv/wallet/mainkey.json
 devenv/wallet/devkey.json
+devenv/wallet/testwallet.json
+devenv/wallet/localuser.key.json
+
+devenv/validator/
 
 validatorenv/test-ledger/
+
+utildev
+
+verdaccio/storage/*
