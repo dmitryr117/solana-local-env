@@ -15,17 +15,14 @@ services:
     #   - solana-validator
     volumes:
       - ./startup.sh:/startup.sh
-      - ./appdev:/sol
+      - ./appdev:/appdev
       - ./devenv/wallet:/wallet
       - ./devenv/config/validator.yml:/root/.config/solana/cli/config.yml
       - ./devenv/validator/test-ledger:/test-ledger
     environment:
-      - HOST_UID=${UID}
-      - HOST_GID=${GID}
-      - HOST_USER=${USER}
       - NPM_LIVE_REGISTRY=registry.npmjs.org
       - NPM_LOCAL_REGISTRY=localhost:4873
-      - PROGRAM_ROOT=/sol/metaplex/program-library
+      - PROGRAM_ROOT=/appdev/metaplex-program-library
     expose:
       - 8899
     # !IMPORTANT. Has to be on host net mode. Otherwise explorer.solana does not work.
