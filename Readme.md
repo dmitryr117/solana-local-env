@@ -10,7 +10,7 @@ or `git clone https://github.com/dmitryr117/solana-local-env.git`
 into directory of your choosing.
 
 2. Make sure that verdaccio docker process owns its directory bind mounts.
-`sudo chown -R 10001:65533 ./verdacio/*` This is important because otherwise
+`sudo chown -R 10001:65533 ./verdaccio/*` This is important because otherwise
 verdaccio will not be able to save NPM packages locally due to permission issues.
 
 3. Make appdev directory `mkdir appdev` and switch into appdev directory.

@@ -11,4 +11,5 @@ validatorenv/test-ledger/
 
 utildev
 
-verdaccio/storage/*
+verdaccio/storage/*/
+verdaccio/storage/.verdaccio-db.json
