@@ -1,5 +1,6 @@
 
-appdev/
+appdev/*/
+
 devenv/wallet/mainkey.json
 devenv/wallet/devkey.json
 devenv/wallet/testwallet.json

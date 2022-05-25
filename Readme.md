@@ -13,4 +13,3 @@ into directory of your choosing.
 `sudo chown -R 10001:65533 ./verdaccio/*` This is important because otherwise
 verdaccio will not be able to save NPM packages locally due to permission issues.
 
-3. Make appdev directory `mkdir appdev` and switch into appdev directory.
