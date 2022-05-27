@@ -3,10 +3,11 @@ version: "3"
 # ATTENTION!. Separate solana validator has issues when trying to upload programs.
 # And so smart contracts have to be deployed withing localhost.
 services:
-  soldev:
+  solana-dev-env:
     # IMPORTANT!: for local development make sure to turn on  
     image: dmitryr117/anchor:0.24.2
-    container_name: soldev
+    # image: dmitryr117/anchor:0.24.2-noavx2 # use if older CPU with no avx2 support
+    container_name: solana-dev-env
     restart: on-failure
     working_dir: /
     # Later will need to add a sudo user a copy of my internal user
