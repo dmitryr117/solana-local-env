@@ -1,19 +1,15 @@
 version: "3"
 
 # ATTENTION!. Separate solana validator has issues when trying to upload programs.
-# And so smart contracts have to be deployed withing localhost.
+# And so smart contracts have to be deployed within localhost.
 services:
   solana-dev-env:
-    # IMPORTANT!: for local development make sure to turn on  
     image: dmitryr117/anchor:0.24.2
     # image: dmitryr117/anchor:0.24.2-noavx2 # use if older CPU with no avx2 support
     container_name: solana-dev-env
     restart: on-failure
     working_dir: /
-    # Later will need to add a sudo user a copy of my internal user
     command: /bin/bash /startup.sh
-    # depends_on:
-    #   - solana-validator
     volumes:
       - ./startup.sh:/startup.sh
       - ./appdev:/appdev
@@ -26,7 +22,7 @@ services:
       - PROGRAM_ROOT=/appdev/metaplex-program-library
     expose:
       - 8899
-    # !IMPORTANT. Has to be on host net mode. Otherwise explorer.solana does not work.
+    # !IMPORTANT. Has to be on host net mode. Otherwise explorer.solana.com does not work.
     network_mode: "host"  
 
   verdaccio:
