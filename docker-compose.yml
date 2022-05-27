@@ -5,7 +5,7 @@ version: "3"
 services:
   soldev:
     # IMPORTANT!: for local development make sure to turn on  
-    image: dmitryr117/anchor-noavx2:0.24.2 # dmitryr117/anchor-noavx2:a0.24.2-s1.10.8-r1.56.0 
+    image: dmitryr117/anchor:0.24.2
     container_name: soldev
     restart: on-failure
     working_dir: /
