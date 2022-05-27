@@ -1,5 +1,7 @@
-Run this command to build image:
+Run this command  template to build images:
 
-$ docker image build -t dmitryr117/rust:1.58.1 -f Dockerfile-rust .
+$ docker image build -t [accountname]/[package-name]:[package-tag] -f Dockerfile .
 
 Change Docker Files and tags as required
+
+

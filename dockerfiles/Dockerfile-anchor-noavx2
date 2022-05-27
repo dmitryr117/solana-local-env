@@ -1,4 +1,4 @@
-FROM dmitryr117/solana:1.10.8
+FROM dmitryr117/solana:1.10.8-noavx2
 
 ENV PATH="/root/.avm/bin:${PATH}"
 ARG nodeversion="17.x"
@@ -13,9 +13,7 @@ RUN sh -c "$(curl -sSfL https://deb.nodesource.com/setup_${nodeversion})" && \
     apt-get install -y git nodejs jq && \
     node --version && \
     npm install --global yarn ts-node
-    
-RUN npm install -g npm@8.11.0
 
-WORKDIR /appdev
+WORKDIR /sol
 
 CMD ["tail", "-f", "/dev/null"]

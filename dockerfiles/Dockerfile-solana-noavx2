@@ -1,0 +1,23 @@
+FROM dmitryr117/rust:1.60.0 AS builder
+
+ADD solana /solana
+
+ENV PATH="/solana/bin:${PATH}"
+
+RUN apt-get install libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang make cmake -y
+# RUN git clone https://github.com/solana-labs/solana/releases/latest /solana
+
+WORKDIR /solana
+
+RUN ./scripts/cargo-install-all.sh .
+
+# RUN solana-install init
+
+
+FROM dmitryr117/rust:1.60.0
+
+COPY --from=builder /solana/bin /opt/solana/bin
+
+ENV PATH="/opt/solana/bin:${PATH}"
+
+CMD ["tail", "-f", "/dev/null"]
