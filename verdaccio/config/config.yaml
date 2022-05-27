@@ -10,7 +10,7 @@ uplinks:
 packages:
   '@metaplex-foundation/*':
     access: $all
-    publish: $authenticated
+    publish: $all
   "@*/*":
     access: $all
     publish: $authenticated
