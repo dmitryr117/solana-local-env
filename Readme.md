@@ -3,6 +3,11 @@ For this reason sometimes need to use `chown -R ` command in case of permission 
 
 # Environment Setup:
 
+Video Tutorial: 
+https://youtu.be/aObI3LFRC7I
+or
+https://odysee.com/@NpmRunProgram:b/04-Development-environment:5?r=8kYS9APzLMWzAz1T3ejL4mrQbSkGgYLp
+
 Environment setup requires that `docker` and `docker-compose` is installed on your system.
 
 1. `git clone git@github.com:dmitryr117/solana-local-env.git`
