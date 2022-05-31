@@ -1,6 +1,6 @@
 ---
 #json_rpc_url: "http://localhost:8899"
-json_rpc_url: "http://solana-validator:8899"
+json_rpc_url: "http://localhost:8899"
 websocket_url: ""
 keypair_path: /wallet/localkey.json
 address_labels:
