@@ -23,6 +23,7 @@ services:
       - PROGRAM_ROOT=/appdev/metaplex-program-library
     expose:
       - 8899
+      - 3000
     # !IMPORTANT. Has to be on host net mode. Otherwise explorer.solana.com does not work.
     network_mode: "host"  
 
