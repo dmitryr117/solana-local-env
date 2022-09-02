@@ -1,6 +1,6 @@
-# dmitryr117/rust:1.60.0
+# dmitryr117/rust:1.63.0
 
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ENV TZ="America/Edmonton"
 

@@ -1,7 +1,7 @@
-FROM dmitryr117/solana:1.10.8
+FROM dmitryr117/solana:1.10.38
 
 ENV PATH="/root/.avm/bin:${PATH}"
-ARG nodeversion="17.x"
+ARG nodeversion="18.x"
 
 RUN cargo install --git https://github.com/project-serum/anchor avm --locked --force && \
 		avm install latest && \
@@ -14,7 +14,7 @@ RUN sh -c "$(curl -sSfL https://deb.nodesource.com/setup_${nodeversion})" && \
     node --version && \
     npm install --global yarn ts-node
     
-RUN npm install -g npm@8.11.0
+RUN npm install -g npm@latest
 
 WORKDIR /appdev
 
