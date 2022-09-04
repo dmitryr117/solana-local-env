@@ -1,4 +1,4 @@
-FROM dmitryr117/solana:v1.8.12
+FROM dmitryr117/anchor:0.25.0-noavx2
 
 #FROM ubuntu:20.04
 
@@ -14,16 +14,11 @@ FROM dmitryr117/solana:v1.8.12
 #     solana config set --url devnet && \
 #     solana config set --keypair /app/wallet/devkey.json
 
-
-ARG nodeversion="17.x"
-
 # RUN apt-get install -y git libssl-dev libffi-dev jq
 # Install metaplex
-RUN sh -c "$(curl -sSfL https://deb.nodesource.com/setup_${nodeversion})" && \
-    apt-get update && \
-    apt-get install -y git nodejs jq && \
+RUN apt-get update && \
+    apt-get install -y git jq && \
     node --version && \
-    npm install --global yarn ts-node && \
     # git clone --branch v1.0.0 https://github.com/metaplex-foundation/metaplex.git /metaplex && \
     git clone https://github.com/metaplex-foundation/metaplex.git /metaplex && \
     yarn install --cwd /metaplex/js/ && \

@@ -4,8 +4,8 @@ version: "3"
 # And so smart contracts have to be deployed within localhost.
 services:
   solana-dev-env:
-    image: dmitryr117/anchor:0.24.2
-    # image: dmitryr117/anchor:0.24.2-noavx2 # use if older CPU with no avx2 support
+    # image: dmitryr117/anchor:0.24.2
+    image: dmitryr117/anchor:0.25.0-noavx2 # use if older CPU with no avx2 support
     container_name: solana-dev-env
     restart: on-failure
     working_dir: /
@@ -17,14 +17,18 @@ services:
       - ./devenv/config/validator.yml:/root/.config/solana/cli/config.yml
       - ./devenv/config/localnet.yml:/root/.config/solana/cli/localnet.yml
       - ./devenv/validator/test-ledger:/test-ledger
+      #- ./libfiles/libssl.so.1.0.0:/usr/lib/x86_64-linux-gnu/libssl.so.1.0.0
+      #- ./libfiles/libssl.so.1.1:/usr/lib/x86_64-linux-gnu/libssl.so.1.1
+      #- ./libfiles/libcrypto.so.1.1:/usr/lib/x86_64-linux-gnu/libcrypto.so.1.1
     environment:
       - NPM_LIVE_REGISTRY=registry.npmjs.org
       - NPM_LOCAL_REGISTRY=localhost:4873
-      - PROGRAM_ROOT=/appdev/metaplex-program-library
+      - PROGRAM_ROOT=/appdev/metaplex/program-library
     expose:
       - 8899
+      - 3000
     # !IMPORTANT. Has to be on host net mode. Otherwise explorer.solana.com does not work.
-    network_mode: "host"  
+    network_mode: "host"
 
   verdaccio:
     image: verdaccio/verdaccio:5.10

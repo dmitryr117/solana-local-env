@@ -1,6 +1,6 @@
-FROM dmitryr117/rust:1.60.0
+FROM dmitryr117/rust:1.63.0
 
-ARG solversion="v1.10.8"
+ARG solversion="v1.10.38"
 ENV PATH="/root/.local/share/solana/install/active_release/bin:${PATH}"
 ARG DEVNET_URL="https://api.devnet.solana.com"
 # Separate run because solana version changes often
