@@ -17,26 +17,29 @@ services:
       - ./devenv/config/validator.yml:/root/.config/solana/cli/config.yml
       - ./devenv/config/localnet.yml:/root/.config/solana/cli/localnet.yml
       - ./devenv/validator/test-ledger:/test-ledger
+      #- ./libfiles/libssl.so.1.0.0:/usr/lib/x86_64-linux-gnu/libssl.so.1.0.0
+      #- ./libfiles/libssl.so.1.1:/usr/lib/x86_64-linux-gnu/libssl.so.1.1
+      #- ./libfiles/libcrypto.so.1.1:/usr/lib/x86_64-linux-gnu/libcrypto.so.1.1
     environment:
       - NPM_LIVE_REGISTRY=registry.npmjs.org
       - NPM_LOCAL_REGISTRY=localhost:4873
-      - PROGRAM_ROOT=/appdev/metaplex-program-library
+      - PROGRAM_ROOT=/appdev/metaplex/program-library
     expose:
       - 8899
       - 3000
     # !IMPORTANT. Has to be on host net mode. Otherwise explorer.solana.com does not work.
     network_mode: "host"
 
-  # verdaccio:
-  #   image: verdaccio/verdaccio:5.10
-  #   container_name: verdaccio
-  #   restart: always
-  #   environment:
-  #     - VERDACCIO_PORT=4873
-  #   ports:
-  #     - "4873:4873"
-  #   volumes:
-  #     - "./verdaccio/storage:/verdaccio/storage"
-  #     - "./verdaccio/config:/verdaccio/conf"
-  #     - "./verdaccio/plugins:/verdaccio/plugins"  
+  verdaccio:
+    image: verdaccio/verdaccio:5.10
+    container_name: verdaccio
+    restart: always
+    environment:
+      - VERDACCIO_PORT=4873
+    ports:
+      - "4873:4873"
+    volumes:
+      - "./verdaccio/storage:/verdaccio/storage"
+      - "./verdaccio/config:/verdaccio/conf"
+      - "./verdaccio/plugins:/verdaccio/plugins"  
 
